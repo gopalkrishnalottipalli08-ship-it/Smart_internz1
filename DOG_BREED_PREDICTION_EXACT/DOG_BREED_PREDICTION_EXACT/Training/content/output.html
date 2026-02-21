@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prediction Result</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', sans-serif;
+    background:black;
+    color:white;
+    text-align:center;
+}
+
+.header{
+    padding:20px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.result-container{
+    margin-top:40px;
+}
+
+.result-container img{
+    width:400px;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(255,165,0,0.6);
+}
+
+.result-container h2{
+    margin-top:30px;
+    font-size:28px;
+}
+
+.result-container span{
+    color:#f5a623;
+    font-weight:bold;
+}
+
+.button{
+    margin-top:30px;
+    padding:10px 25px;
+    background:#f5a623;
+    border:none;
+    border-radius:5px;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.button:hover{
+    background:#ff8c00;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    DOG BREED IDENTIFICATION
+</div>
+
+<div class="result-container">
+
+    <img src="{{ url_for('static', filename='uploads/' + image_name) }}">
+
+    <h2>
+        The Dog Breed is 
+        <span>{{ prediction }}</span>
+    </h2>
+
+    <a href="/">
+        <button class="button">Try Another Image</button>
+    </a>
+
+</div>
+
+</body>
+</html>

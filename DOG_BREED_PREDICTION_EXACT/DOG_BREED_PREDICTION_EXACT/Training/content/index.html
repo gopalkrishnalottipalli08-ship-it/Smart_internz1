@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dog Breed Identification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#000;color:white;}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:fixed;
+    width:100%;
+    padding:20px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#000;
+    z-index:1000;
+}
+
+.logo{
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#f5a623;
+}
+
+.inspect-btn{
+    border:1px solid #f5a623;
+    padding:5px 15px;
+    border-radius:4px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    padding-top:80px;
+    background:#000;
+}
+
+.circle{
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#c35b1d;
+    border-radius:50%;
+    opacity:0.9;
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+
+.hero h1{
+    font-size:48px;
+    font-weight:700;
+}
+
+.hero span{
+    color:#f5a623;
+}
+
+.hero p{
+    margin-top:10px;
+    color:#ccc;
+}
+
+/* Upload */
+
+.upload{
+    margin-top:25px;
+}
+
+.upload input{
+    padding:8px;
+    background:white;
+    color:black;
+    border-radius:4px;
+}
+
+.upload button{
+    margin-top:10px;
+    padding:8px 20px;
+    background:#28a745;
+    border:none;
+    color:white;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:100px 80px;
+    background:#f9f9f9;
+    color:black;
+}
+
+.about-wrapper{
+    display:flex;
+    justify-content:space-between;
+    gap:60px;
+}
+
+.about-left{
+    width:55%;
+}
+
+.about-title{
+    text-align:center;
+    margin-bottom:30px;
+    color:#7b1fa2;
+}
+
+.dog-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.dog-grid img{
+    width:100%;
+    border-radius:8px;
+}
+
+.about-right{
+    width:45%;
+}
+
+.about-box{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.about-box h3{
+    color:#f5a623;
+    margin-bottom:5px;
+}
+
+.about-box p{
+    font-size:14px;
+    color:#555;
+}
+
+.icon{
+    background:#f5a623;
+    color:white;
+    padding:10px;
+    border-radius:6px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    padding:100px 80px;
+    background:white;
+    color:black;
+}
+
+.contact h2{
+    margin-bottom:30px;
+}
+
+.contact-container{
+    display:flex;
+    justify-content:space-between;
+}
+
+.contact-info{
+    width:35%;
+}
+
+.contact-form{
+    width:60%;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:4px;
+}
+
+.contact-form button{
+    background:#f5a623;
+    border:none;
+    padding:10px 20px;
+    color:white;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <div class="logo">DOG BREED.</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="inspect-btn">Inspect</a>
+    </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+<div class="circle"></div>
+
+<div class="hero-content">
+    <h1>Dog Breed<br>Identification<span>.</span></h1>
+    <p>Identification of Different Dog Breeds</p>
+
+    <div class="upload">
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+
+<div class="about-wrapper">
+
+<div class="about-left">
+    <h2 class="about-title">Search by Images</h2>
+    <div class="dog-grid">
+        <img src="{{ url_for('static', filename='dogs/dog1.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog2.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog3.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog4.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog5.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog6.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog7.jpg') }}">
+        <img src="{{ url_for('static', filename='dogs/dog8.jpg') }}">
+    </div>
+</div>
+
+<div class="about-right">
+
+<div class="about-box">
+<div class="icon">📂</div>
+<div>
+<h3>Data Preparation</h3>
+<p>The dataset is cleaned and organized into training and testing sets.</p>
+</div>
+</div>
+
+<div class="about-box">
+<div class="icon">⚙</div>
+<div>
+<h3>Model Building</h3>
+<p>VGG19 transfer learning model is used for classification.</p>
+</div>
+</div>
+
+<div class="about-box">
+<div class="icon">📊</div>
+<div>
+<h3>Model Training & Evaluation</h3>
+<p>The model is trained using categorical crossentropy and evaluated using accuracy.</p>
+</div>
+</div>
+
+<div class="about-box">
+<div class="icon">🚀</div>
+<div>
+<h3>Model Deployment</h3>
+<p>The trained model is deployed using Flask for real-time prediction.</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+
+<h2>CONTACT US</h2>
+
+<div class="contact-container">
+
+<div class="contact-info">
+<p><strong>Location:</strong> Hyderabad, Telangana</p>
+<p><strong>Email:</strong> info@dogbreed.com</p>
+<p><strong>Call:</strong> +91 6304320044</p>
+</div>
+
+<div class="contact-form">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<input type="text" placeholder="Subject">
+<textarea rows="4" placeholder="Message"></textarea>
+<button>Send Message</button>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

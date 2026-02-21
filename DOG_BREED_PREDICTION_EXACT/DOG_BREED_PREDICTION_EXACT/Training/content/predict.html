@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Preview Image</title>
+</head>
+<body style="text-align:center; padding-top:50px; font-family:Segoe UI;">
+
+<h1>Preview Image</h1>
+
+<img src="{{ url_for('static', filename='uploads/' + image_name) }}" 
+     width="400"
+     style="border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.3);">
+
+<br><br>
+
+<form action="/output" method="POST">
+    <input type="hidden" name="image_name" value="{{ image_name }}">
+    <button type="submit"
+            style="padding:8px 20px; background:green; color:white; border:none; border-radius:5px;">
+        Predict
+    </button>
+</form>
+
+<br><br>
+<a href="/">Cancel</a>
+
+</body>
+</html>
